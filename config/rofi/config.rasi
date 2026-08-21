@@ -4,6 +4,7 @@ configuration {
 	modi: "window,run,drun,filebrowser,ssh";
 	terminal: "alacritty";
 	filebrowser {
+        command: "alacritty -e nvim";
 		directory: "/home/radar77";
 	}
 }
