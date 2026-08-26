@@ -12,8 +12,74 @@ mason_lspconfig.setup({
         "pyright",          -- Python
         "asm_lsp",          -- Assembly
         "hls",              -- Haskell
-        --"checkmake",        -- Makefiles
+        --"checkmake",        -- Make
     }
+})
+
+require('lualine').setup {
+    options = {
+        icons_enabled = true,
+        theme = 'auto',
+        component_separators = { left = '', right = ''},
+        section_separators = { left = '', right = ''},
+        disabled_filetypes = {
+            statusline = {},
+            winbar = {},
+        },
+        ignore_focus = {},
+        always_divide_middle = true,
+        always_show_tabline = true,
+        globalstatus = false,
+        refresh = {
+            statusline = 1000,
+            tabline = 1000,
+            winbar = 1000,
+            refresh_time = 16, -- ~60fps
+            events = {
+                'WinEnter',
+                'BufEnter',
+                'BufWritePost',
+                'SessionLoadPost',
+                'FileChangedShellPost',
+                'VimResized',
+                'Filetype',
+                'CursorMoved',
+                'CursorMovedI',
+                'ModeChanged',
+            },
+        }
+    },
+    sections = {
+        lualine_a = {'mode'},
+        lualine_b = {'branch', 'diff', 'diagnostics'},
+        lualine_c = {'filename'},
+        lualine_x = {'buffers', 'filetype'},
+        lualine_y = {'progress'},
+        lualine_z = {'location'}
+    },
+    inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {'filename'},
+        lualine_x = {'location'},
+        lualine_y = {},
+        lualine_z = {}
+    },
+    tabline = {},
+    winbar = {},
+    inactive_winbar = {},
+    extensions = {}
+}
+
+require("catppuccin").setup({
+    flavour = "mocha",
+    transparent_background = true,
+    custom_highlights = function(colors)
+        return {
+            LineNr = { fg = colors.lavender },
+            CursorLineNr = { fg = colors.peach }
+        }
+    end
 })
 
 --[[mason_lspconfig.setup_handlers({
@@ -58,29 +124,10 @@ vim.api.nvim_create_user_command(
     }
 )
 
---[[require("noice").setup({
-	lsp = {
-		override = {
-			["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-			["vim.lsp.util.stylize_markdown"] = true,
-			["cmp.entry.get_documentation"] = true,
-		},
-	},
-
-	presets = {
-		bottom_search = true,
-		command_palette = true,
-		long_message_to_split = true,
-		inc_rename = false,
-		lsp_doc_border = false,
-	},
-})]]
-
---require("oil").setup()
 
 vim.api.nvim_create_user_command('M', function(opts) vim.cmd("ManPages "..opts.args) end, { desc = "Alias for ManPages", nargs = '?'})
-
 vim.api.nvim_create_user_command('Ex', function(opts) vim.cmd("Ranger "..opts.args) end, {desc = "Ranger alias", nargs = '?'})
+vim.api.nvim_create_user_command('D', function(opts) vim.cmd("Dashboard") end, {desc = "Dashboard alias", nargs = '?'})
 
 vim.api.nvim_create_user_command('CRun', function()
     local cmd = vim.fn.input("Command: ")
@@ -129,6 +176,10 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
+vim.opt.cursorline = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+
 vim.lsp.config("jdtls", {
     settings = {
         java ={},
@@ -137,4 +188,7 @@ vim.lsp.config("jdtls", {
 vim.lsp.enable("jdtls")
 vim.lsp.enable("clangd")
 
+vim.cmd.colorscheme "catppuccin-nvim"
+
+vim.cmd([[Screenkey]])
 vim.cmd([[cd ~]])

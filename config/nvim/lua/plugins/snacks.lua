@@ -21,7 +21,7 @@ return {
 	},
 	keys = {
 		--{"p", function() Snacks.picker.smart() end, desc = "Smart picker" },
-		{"e", function() Snacks.explorer() end, desc = "File explorer" },
+		--{"e", function() Snacks.explorer() end, desc = "File explorer" },
 	},
 	init = function()
 		vim.api.nvim_create_autocmd("User", {
