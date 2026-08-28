@@ -128,6 +128,7 @@ vim.api.nvim_create_user_command(
 vim.api.nvim_create_user_command('M', function(opts) vim.cmd("ManPages "..opts.args) end, { desc = "Alias for ManPages", nargs = '?'})
 vim.api.nvim_create_user_command('Ex', function(opts) vim.cmd("Ranger "..opts.args) end, {desc = "Ranger alias", nargs = '?'})
 vim.api.nvim_create_user_command('D', function(opts) vim.cmd("Dashboard") end, {desc = "Dashboard alias", nargs = '?'})
+vim.api.nvim_create_user_command('Econf', function(opts) vim.cmd("e ~/.config/nvim/init.lua") end, {desc = "Edit NeoVim config", nargs = 0})
 
 vim.api.nvim_create_user_command('CRun', function()
     local cmd = vim.fn.input("Command: ")
