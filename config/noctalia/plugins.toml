@@ -1,0 +1,17 @@
+[plugins]
+# Fully-qualified ids ("<author>/<plugin>") that are active.
+enabled = ["radimous/prismlauncher-instances", "cleboost/zed-provider", "noctalia/notes", "yocraft/battery-widget", "yugaaank/better-clock", "piero-93/battery-power-management"]
+auto_update = "all"
+
+[[plugins.source]]
+name     = "official"
+kind     = "git"
+location = "https://github.com/noctalia-dev/official-plugins"
+enabled  = true
+
+[[plugins.source]]
+name     = "community"
+kind     = "git"
+location = "https://github.com/noctalia-dev/community-plugins"
+enabled  = true
+
