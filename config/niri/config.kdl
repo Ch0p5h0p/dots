@@ -16,6 +16,8 @@ output "eDP-1" {
 }
 
 input {
+    focus-follows-mouse
+
     keyboard {
         xkb {
             layout "us"
@@ -32,7 +34,13 @@ gestures {
     }
 }
 
+layer-rule {
+    match namespace="^noctalia-backdrop"
+    place-within-backdrop true
+}
+
 layout {
+    background-color "transparent"
     gaps 20
 
     shadow {
@@ -51,6 +59,12 @@ layout {
         inactive-color "#585b70"
     }
 
+}
+
+overview {
+    workspace-shadow {
+        off
+    }
 }
 
 window-rule {
