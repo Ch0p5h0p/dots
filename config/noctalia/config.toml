@@ -7,7 +7,7 @@ font_family = "Space Mono"
 sort_by_usage = true
 
 [shell.screenshot]
-directory = "/home/radar77/Media/Pictures/Screenshots"
+directory = "~/Media/Pictures/Screenshots"
 
 [theme]
 mode = "dark"
