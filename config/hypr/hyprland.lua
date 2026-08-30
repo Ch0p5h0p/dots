@@ -37,7 +37,8 @@ hl.monitor({
 -- Set programs that you use
 local terminal = "kitty -1"
 local fileManager = "kitty -1 -- ranger"
-local menu = "noctalia msg panel-toggle launcher" -- old: "rofi -show drun -theme ~/.config/rofi/config.rasi"
+local menu = "rofi"
+local screenshot = "HyprShot.sh"
 local editor = "alacritty -e nvim"
 local graphicalEditor = "zeditor"
 
@@ -63,6 +64,7 @@ hl.env("HYPRCURSOR_SIZE", "24")
 --env = XDG_SESSION_DESKTOP,KDE
 --env = KDE_FULL_SESSION,true
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
+hl.env("QT_STYLE_OVERRIDE", "kvantum")
 hl.env("BROWSER", "firefox")
 
 hl.env("VISUAL", "zeditor")
@@ -99,13 +101,13 @@ hl.window_rule({
     opacity = "0.9 override",
 })
 
---[[hl.window_rule({
+hl.window_rule({
     name = "zed-transparency",
     match = {
         class = "^(dev.zed.Zed)$",
     },
     opacity = "0.9 override",
-})]]--
+})
 
 hl.window_rule({
     name = "cutter-transparency",
@@ -113,14 +115,6 @@ hl.window_rule({
         class = "^(re.rizin.cutter)$",
     },
     opacity = "0.9 override",
-})
-
-hl.window_rule({
-    name = "prismLauncher-transparency",
-    match = {
-        class = "^(org.prismlauncher.PrismLauncher)$"
-    },
-    opacity = "0.9 override"
 })
 
 hl.curve("easeOutQuint", { type = "bezier", points = { { 0.23, 1 }, { 0.32, 1 } } })
@@ -238,27 +232,24 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
-hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("noctalia msg session lock"))
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(editor))
 hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd(graphicalEditor))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + SHIFT + D", hl.dsp.exec_cmd("dolphin"))
-hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu .. " -show drun -theme ~/.config/rofi/config.rasi"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
 
-hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("noctalia msg panel-toggle wallpaper"))
-hl.bind(mainMod .. " + SHIFT + Space", hl.dsp.exec_cmd("noctalia msg screenshot-fullscreen"))
-hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd("noctalia msg screenshot-region"))
+hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(screenshot))
+hl.bind(mainMod .. " + ALT + Space", hl.dsp.exec_cmd("hyprshot -m region"))
+hl.bind(mainMod .. " + SHIFT + Space", hl.dsp.exec_cmd("rofi -show filebrowser"))
 hl.bind("ALT + Tab", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind("ALT + SHIFT + Tab", hl.dsp.focus({ workspace = "e-1" }))
 
-hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("noctalia msg panel-toggle control-center"))
-hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("noctalia msg panel-toggle noctalia/notes:panel"))
-
-hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("kitty -- todo read main"))
+hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("alacritty -e todo read main"))
 
 hl.bind("SUPER + SHIFT + left", hl.dsp.window.move({ direction = "l" }))
 hl.bind("SUPER + SHIFT + right", hl.dsp.window.move({ direction = "r" }))
@@ -498,9 +489,8 @@ hl.config({
 })
 
 hl.on("hyprland.start", function()
-    --hl.exec_cmd("hyprpaper &")
-    -- hl.exec_cmd("waybar &")
-    hl.exec_cmd("noctalia &")
+    hl.exec_cmd("hyprpaper &")
+    hl.exec_cmd("waybar &")
     hl.exec_cmd("kitty --detach --title 'kitty-daemon' --single-instance sh -c 'exit'")
     hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
     hl.exec_cmd("nm-applet &")
