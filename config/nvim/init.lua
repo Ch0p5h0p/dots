@@ -71,23 +71,6 @@ require('lualine').setup {
     extensions = {}
 }
 
-require("catppuccin").setup({
-    flavour = "mocha",
-    transparent_background = true,
-    custom_highlights = function(colors)
-        return {
-            LineNr = { fg = colors.lavender },
-            CursorLineNr = { fg = colors.peach }
-        }
-    end
-})
-
---[[mason_lspconfig.setup_handlers({
-    function(server_name)
-        require("lspconfig")[server_name].setup({})
-    end,
-})]]
-
 local ranger_nvim = require("ranger-nvim")
 ranger_nvim.setup({
     enable_cmds = true,
@@ -189,7 +172,7 @@ vim.lsp.config("jdtls", {
 vim.lsp.enable("jdtls")
 vim.lsp.enable("clangd")
 
-vim.cmd.colorscheme "catppuccin-nvim"
+vim.cmd.colorscheme "noctalia"
 
 vim.cmd([[Screenkey]])
 vim.cmd([[cd ~]])
