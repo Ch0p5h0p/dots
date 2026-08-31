@@ -2,8 +2,7 @@
 Dotfiles, configs, etc.
 
 ## INSTALLATION
-- Copy everything in config into ~/.config
-- Copy .zshrc into ~ 
+- Copy everything in `config` into `~/.config`
 
 ## CONTAINS CONFIGS FOR
 - neovim
