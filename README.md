@@ -8,18 +8,17 @@ Dotfiles, configs, etc.
 ## CONTAINS CONFIGS FOR
 - neovim
 - fastfetch
-- alacritty
+- kitty
+- niri
+- fish
+- noctalia
 - cava
-- hyprland
-- hyprlock
-- hyprpaper
 - gtk 3.0 and 4.0
-- ranger
-- rofi
-- waybar
+- ranger 
 
 ## HISTORY
 | Empty | Populated |
 |---|---|
 |![original-empty](past-rice/rice-original-blank.png) | ![original-populated](past-rice/rice-original-populated.png)|
 |![7-11-2026-empty](past-rice/rice-7-11-2026-blank.png) | ![7-11-2026-populated](past-rice/rice-7-11-2026-populated.png)|
+|![8-30-2026-empty](past-rice/rice-8-30-2026-blank.png) | ![8-30-2026-populated](past-rice/rice-8-30-2026-populated.png)|
