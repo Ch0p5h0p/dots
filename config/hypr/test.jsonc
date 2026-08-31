@@ -1,9 +1,0 @@
-{
-    "logo": {
-        "source": "~/.config/hypr/logo.txt"
-    },
-    "modules": [
-        "cpu",
-        "memory"
-    ]
-}
