@@ -1,10 +1,15 @@
-# Ch0p's dots
-Dotfiles, configs, etc.
+# Ch0p's System Config
+My configurations for my system
 
 ## INSTALLATION
-- Copy everything in `config` into `~/.config`
+- Copy `config/*` into `~/.config`
+- Copy `nixos-config/*` into `/etc/nixos`
 
-## CONTAINS CONFIGS FOR
+## INCLUDED
+### System Configurations
+- NixOS
+
+### App Configuratons
 - neovim
 - fastfetch
 - kitty
@@ -15,7 +20,7 @@ Dotfiles, configs, etc.
 - gtk 3.0 and 4.0
 - ranger 
 
-## HISTORY
+## RICE HISTORY
 | Empty | Populated |
 |---|---|
 |![original-empty](past-rice/rice-original-blank.png) | ![original-populated](past-rice/rice-original-populated.png)|
