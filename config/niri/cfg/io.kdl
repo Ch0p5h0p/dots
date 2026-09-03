@@ -1,0 +1,30 @@
+// Input and output config
+
+output "eDP-1" {
+    mode "1920x1080@120"
+    scale 1
+}
+
+input {
+    focus-follows-mouse
+
+    keyboard {
+        xkb {
+            layout "us"
+        }
+    }
+
+    touchpad {
+        natural-scroll
+    }
+}
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+cursor {
+    xcursor-theme "Adwaita"
+    xcursor-size 24
+}
