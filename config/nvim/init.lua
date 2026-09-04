@@ -46,5 +46,5 @@ vim.opt.relativenumber = true
 
 vim.cmd.colorscheme "catppuccin-nvim"
 
-vim.cmd([[Screenkey]])
+--vim.cmd([[Screenkey]])
 vim.cmd([[cd ~]])
